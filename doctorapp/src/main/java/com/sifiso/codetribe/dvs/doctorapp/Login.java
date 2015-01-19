@@ -46,6 +46,8 @@ public class Login extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        ed = sp.edit();
         ctx = getApplicationContext();
         build();
         checkVirginity();
@@ -89,8 +91,7 @@ public class Login extends Activity {
     }
 
     private void build() {
-        sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        ed = sp.edit();
+
         L_spinnerEmail = (AutoCompleteTextView) findViewById(R.id.L_spinnerEmail);
         L_password = (EditText) findViewById(R.id.L_password);
         L_login = (Button) findViewById(R.id.L_login);

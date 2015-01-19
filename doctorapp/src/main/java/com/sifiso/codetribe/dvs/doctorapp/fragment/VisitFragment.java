@@ -1,61 +1,54 @@
-package com.sifiso.codetribe.dvs.doctorlib.fragment;
+package com.sifiso.codetribe.dvs.doctorapp.fragment;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.sifiso.codetribe.dvs.doctorlib.R;
-import com.sifiso.codetribe.dvs.doctorlib.adapter.PatientAdapter;
+import com.sifiso.codetribe.dvs.doctorlib.adapter.VisitAdapter;
 import com.sifiso.codetribe.dvs.doctorlib.dto.DoctorDTO;
-import com.sifiso.codetribe.dvs.doctorlib.dto.PatientfileDTO;
-import com.sifiso.codetribe.dvs.doctorlib.dto.RequestDTO;
 import com.sifiso.codetribe.dvs.doctorlib.dto.ResponseDTO;
 import com.sifiso.codetribe.dvs.doctorlib.dto.VisitDTO;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple {@link android.support.v4.app.Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link PatientFragment.OnFragmentInteractionListener} interface
+ * {@link VisitFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link PatientFragment#newInstance} factory method to
+ * Use the {@link VisitFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PatientFragment extends Fragment {
+public class VisitFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "doctor";
     private static final String ARG_PARAM2 = "response";
-
-
-    // TODO: Rename and change types of parameters
-    private DoctorDTO doctor =new DoctorDTO();
+    private DoctorDTO doctor = new DoctorDTO();
     private ResponseDTO response = new ResponseDTO();
-    private ListView FP_list;
-
+    private ListView FV_list;
     private OnFragmentInteractionListener mListener;
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment= new  PatientFragment.
+     * @return A new instance of fragment VisitFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PatientFragment newInstance(ResponseDTO response) {
-        PatientFragment fragment = new PatientFragment();
+    public static VisitFragment newInstance(ResponseDTO response) {
+        VisitFragment fragment = new VisitFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_PARAM2, response);
         fragment.setArguments(args);
         return fragment;
     }
 
-    public PatientFragment() {
+    public VisitFragment() {
         // Required empty public constructor
     }
 
@@ -69,31 +62,39 @@ public class PatientFragment extends Fragment {
     }
 
     View v;
-    PatientAdapter patientAdapter;
-    private Context ctx;
+    Context ctx;
+    VisitAdapter visitAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_patient, container, false);
-        FP_list = (ListView) v.findViewById(R.id.FP_list);
+        inflater = getActivity().getLayoutInflater();
+        v = inflater.inflate(com.sifiso.codetribe.dvs.doctorlib.R.layout.fragment_visit, container, false);
+        FV_list = (ListView) v.findViewById(com.sifiso.codetribe.dvs.doctorlib.R.id.FV_list);
         if (response != null) {
-            patientAdapter = new PatientAdapter(ctx, R.layout.patient_view, response.getDoctor().getPatientfileList(), new PatientAdapter.PatientfileAdapterListener() {
+            visitAdapter = new VisitAdapter(ctx, com.sifiso.codetribe.dvs.doctorlib.R.layout.visit_view_custom, response.getDoctor().getVisitList(), new VisitAdapter.VisitAdapterListener() {
                 @Override
-                public void onPatientfileData(PatientfileDTO patientfile) {
+                public void onVisitData(VisitDTO visit) {
+                    mListener.onFragmentInteraction(visit);
 
                 }
             });
-            FP_list.setAdapter(patientAdapter);
+
         }
+        FV_list.setAdapter(visitAdapter);
+        FV_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mListener.onFragmentInteraction(response.getDoctor().getVisitList().get(position));
+            }
+        });
         return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(PatientfileDTO patient) {
+    public void onButtonPressed(VisitDTO visit) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(patient);
+            mListener.onFragmentInteraction(visit);
         }
     }
 
@@ -126,7 +127,7 @@ public class PatientFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(PatientfileDTO uri);
+        public void onFragmentInteraction(VisitDTO uri);
     }
 
 }

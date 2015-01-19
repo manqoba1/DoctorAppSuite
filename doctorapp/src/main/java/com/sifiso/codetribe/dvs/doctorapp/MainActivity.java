@@ -7,22 +7,20 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.gson.Gson;
+import com.sifiso.codetribe.dvs.doctorapp.fragment.PatientFragment;
+import com.sifiso.codetribe.dvs.doctorapp.fragment.VisitFragment;
 import com.sifiso.codetribe.dvs.doctorlib.adapter.PagerAdapter;
 import com.sifiso.codetribe.dvs.doctorlib.dto.PatientfileDTO;
 import com.sifiso.codetribe.dvs.doctorlib.dto.RequestDTO;
 import com.sifiso.codetribe.dvs.doctorlib.dto.ResponseDTO;
 import com.sifiso.codetribe.dvs.doctorlib.dto.VisitDTO;
-import com.sifiso.codetribe.dvs.doctorlib.fragment.PatientFragment;
-import com.sifiso.codetribe.dvs.doctorlib.fragment.VisitFragment;
 import com.sifiso.codetribe.dvs.doctorlib.toolbox.BaseVolley;
-import com.sifiso.codetribe.dvs.doctorlib.util.SharedUtil;
 import com.sifiso.codetribe.dvs.doctorlib.util.Statics;
 import com.sifiso.codetribe.dvs.doctorlib.util.ToastUtil;
 import com.sifiso.codetribe.dvs.doctorlib.util.WebSocketUtil;
@@ -38,9 +36,10 @@ public class MainActivity extends FragmentActivity implements PatientFragment.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(com.sifiso.codetribe.dvs.doctorlib.R.layout.activity_main);
+        ctx = getApplicationContext();
         sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        mPager = (ViewPager) findViewById(R.id.pager);
+        mPager = (ViewPager) findViewById(com.sifiso.codetribe.dvs.doctorlib.R.id.pager);
         refresh = getIntent().getBooleanExtra("refresh", false);
         if (savedInstanceState != null) {
             response = (ResponseDTO) savedInstanceState
@@ -58,7 +57,7 @@ public class MainActivity extends FragmentActivity implements PatientFragment.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(com.sifiso.codetribe.dvs.doctorlib.R.menu.main, menu);
         sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         doctorID = sp.getInt("doctorID", 0);
         if (refresh) {
@@ -76,7 +75,7 @@ public class MainActivity extends FragmentActivity implements PatientFragment.On
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == com.sifiso.codetribe.dvs.doctorlib.R.id.action_settings) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -133,10 +132,10 @@ public class MainActivity extends FragmentActivity implements PatientFragment.On
 
     public void setRefreshActionButtonState(final boolean refreshing) {
         if (mMenu != null) {
-            final MenuItem refreshItem = mMenu.findItem(R.id.action_refresh);
+            final MenuItem refreshItem = mMenu.findItem(com.sifiso.codetribe.dvs.doctorlib.R.id.action_refresh);
             if (refreshItem != null) {
                 if (refreshing) {
-                    refreshItem.setActionView(R.layout.action_bar_progess);
+                    refreshItem.setActionView(com.sifiso.codetribe.dvs.doctorlib.R.layout.action_bar_progess);
                 } else {
                     refreshItem.setActionView(null);
                 }

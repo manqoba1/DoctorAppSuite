@@ -13,10 +13,10 @@ public class Statics {
      */
 
     //public static final String WEBSOCKET_URL = "ws://41.19.186.45:8080/DVS/";
-    public static final String WEBSOCKET_URL = "ws://192.168.33.144:8080/DVS/";
-    public static final String URL = "http://192.168.33.144:8080/DVS/";
+    public static final String WEBSOCKET_URL = "ws://192.168.1.123:8080/DVS/";
+    public static final String URL = "http://192.168.1.123:8080/DVS/";
     //public static final String URL = "http://41.19.186.45:8080/DVS/";
-    public static final String IMAGE_URL = "http://192.168.33.144:8080/dvs_images/";
+    public static final String IMAGE_URL = "http://192.168.1.123:8080/dvs_images/";
 
     /*public static final String INVITE_DESTINATION = "https://play.google.com/store/apps/details?id=";
     public static final String INVITE_ADMIN = INVITE_DESTINATION + "com.boha.malengagolf.admin";

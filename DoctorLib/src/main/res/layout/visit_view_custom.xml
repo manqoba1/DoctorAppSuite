@@ -25,8 +25,9 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Pending"
+            android:layout_marginTop="15dp"
             android:id="@+id/VV_status"
-            android:layout_alignBottom="@+id/VV_count"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
         <TextView
@@ -36,18 +37,18 @@
             android:text="Sifiso Mtshweni"
             android:textSize="18sp"
             android:id="@+id/VV_name"
-            android:textColor="@color/blue_dark1"
+            android:textColor="@color/blue_dark2"
             android:layout_below="@+id/VV_count"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="24dp" />
+            android:layout_marginTop="7dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="3150"
-            android:textColor="@color/blue_dark1"
+            android:textColor="@color/blue_dark2"
             android:id="@+id/VV_stnd_no"
             android:layout_alignTop="@+id/VV_name"
             android:layout_alignParentRight="true"
@@ -58,17 +59,17 @@
             android:layout_height="wrap_content"
             android:text="Set By:"
             android:id="@+id/textView7"
-            android:textColor="@color/black"
+            android:textColor="@color/accent_material_light"
             android:layout_below="@+id/VV_name"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sifiso Mtshweni"
-            android:textColor="@color/black"
+            android:textColor="@color/accent_material_light"
             android:id="@+id/VV_receptionist"
             android:layout_alignTop="@+id/textView7"
             android:layout_alignRight="@+id/VV_stnd_no"

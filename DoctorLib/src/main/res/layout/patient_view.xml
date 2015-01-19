@@ -35,19 +35,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Patient"
+            android:text="Patient:"
             android:id="@+id/VV_name"
             android:textColor="@color/blue_dark1"
             android:layout_below="@+id/PV_count"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="24dp" />
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Sifiso Mtshweni"
+            android:textSize="18sp"
             android:textColor="@color/blue_dark1"
             android:id="@+id/PV_name"
             android:layout_alignTop="@+id/VV_name"
@@ -63,13 +64,13 @@
             android:layout_below="@+id/VV_name"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="1dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12/12/2013"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:id="@+id/PV_date_made"
             android:textColor="@color/green"
             android:layout_alignTop="@+id/textView7"
@@ -85,7 +86,7 @@
             android:layout_below="@+id/textView7"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="6dp" />
+            android:layout_marginTop="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
